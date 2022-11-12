@@ -1,0 +1,563 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Font awesome link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+        integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- jquery link -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"
+        integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- tailwind elements -->
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tw-elements/dist/css/index.min.css" />
+    <!-- flowbite -->
+    <link rel="stylesheet" href="https://unpkg.com/flowbite@1.5.3/dist/flowbite.min.css" />
+    <!-- tailwind link -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- tailwind config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        "bookmark-purple": "#5267DF",
+                        "bookmark-red": "#FA5959",
+                        "bookmark-blue": "#242A45",
+                        "bookmark-grey": "#9194A2",
+                        "bookmark-white": "#f7f7f7",
+                    },
+                },
+                fontFamily: {
+                    Poppins: ["Poppins, sans-serif"],
+                },
+                container: {
+                    center: true,
+                    padding: "1rem",
+                    screens: {
+                        lg: "1124px",
+                        xl: "1124px",
+                        "2xl": "1124px",
+                    },
+                }
+            }
+        }
+    </script>
+    <!-- tailwind custom layers etc... -->
+    <style type="text/tailwindcss">
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap');
+        .btn {
+        @apply shadow-md py-3 px-6 rounded-md transition duration-300
+        }
+        .btn-purple {
+        @apply bg-bookmark-purple text-white
+        }
+        .btn-white{
+@apply bg-bookmark-white
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header>
+        <nav class="container flex items-center py-4 mt-4 sm:mt-14  ">
+            <div class="py-1"><img class="hover:fill-white" src="images/logo-bookmark.svg" alt="bookmark logo"></div>
+            <ul
+                class="hidden sm:flex flex-1 gap-12 justify-end items-center text-xs uppercase text-bookmark-blue font-medium">
+                <li class="cursor-pointer hover:text-bookmark-red">Features</li>
+                <li class="cursor-pointer hover:text-bookmark-red">Pricing</li>
+                <li class="cursor-pointer hover:text-bookmark-red">Contact</li>
+                <button type="button"
+                    class=" transition delay-400 uppercase py-3 px-7 bg-bookmark-red  text-white rounded-md border-2 border-bookmark-red font-medium hover:text-bookmark-red hover:bg-white">Login</button>
+            </ul>
+            <div class="flex sm:hidden flex-1 justify-end">
+                <i class=" cursor-pointer text-2xl fa-solid fa-bars" onclick="Open()"></i>
+            </div>
+        </nav>
+        <div id="hiddennavbar"
+            class="z-50 hidden flex justify-between  flex-col bg-[#252B46]/90 w-full min-h-screen absolute overflow-y-auto top-0 bottom-0 left-O right-0 py-10 px-8 ">
+            <div>
+                <div class="flex flex-row justify-between">
+                    <div class="flex flex-row gap-1 items-center">
+                        <i class=" py-1.5 px-1.5  rounded-full bg-white text-[7px] fa-solid fa-bookmark"></i>
+                        <h1 class="uppercase font-medium text-white text-sm">bookmark</h1>
+                    </div>
+                    <i class="cursor-pointer text-white text-xl fa-solid fa-xmark" onclick="Close()"></i>
+                </div>
+                <ul
+                    class=" tracking-widest mt-8 flex flex-col gap-4 justify-end items-center text-sm uppercase text-white ">
+                    <li
+                        class="cursor-pointer hover:text-bookmark-red border-t-white border-t-[1px] w-full text-center pt-3 border-opacity-20  ">
+                        Features</li>
+                    <li
+                        class="cursor-pointer hover:text-bookmark-red border-t-white border-t-[1px] w-full text-center pt-3 border-opacity-20">
+                        Pricing</li>
+                    <li
+                        class="cursor-pointer hover:text-bookmark-red border-y-white  border-y-[1px] w-full text-center pt-3 pb-4 border-opacity-20">
+                        Contact</li>
+                    <button type="button"
+                        class=" w-full uppercase py-2 mt-1  text-white rounded-md border-2 border-white font-semibold hover:text-white hover:bg-bookmark-red">Login</button>
+                </ul>
+            </div>
+            <div class="justify-end flex gap-6 mt-4 self-center">
+                <img class="cursor-pointer" src="images/icon-facebook.svg" alt="">
+                <img class="cursor-pointer" src="images/icon-twitter.svg" alt="">
+            </div>
+        </div>
+    </header>
+    <!-- Hero -->
+    <section class="overflow-hidden">
+        <div class="container flex flex-col-reverse lg:flex-row items-center gap-12 mt-14 lg:mt-28">
+            <!-- Content -->
+            <div class="flex flex-1 flex-col items-center lg:items-start">
+                <h2 class="text-bookmark-blue text-3xl md: text-4 lg:text-5xl text-center font-bold lg:text-left mb-6">
+                    A Simple Bookmark Manager
+                </h2>
+                <p class="text-bookmark-grey text-lg text-center lg:text-left mb-6">
+                    A clean and simple interface to organize your favourite websites. Open a new browser tab and see
+                    load instantly. Try it for free.
+                </p>
+                <div class="flex justify-center flex-wrap gap-6">
+                    <button type="button" class="btn btn-purple hover:bg-bookmark-white hover:text-black">Get it on
+                        Chrome</button>
+                    <button type="button" class="btn btn-white hover:bg-bookmark-purple text-black hover:text-white">Get
+                        it on
+                        Firefox</button>
+                </div>
+            </div>
+            <div class="flex flex-1 justify-center  mb-10 md:mb-16 lg:mb-0  relative lg:mb-2">
+                <img class="z-10 w-5/6 h-5/6 sm:w-3/4 sm:h-3/4 md:w-full md:h-full" src="images/illustration-hero.svg"
+                    alt="">
+                <!-- taswira ta3 rawl -->
+                <div class="  rounded-l-full bg-bookmark-purple absolute h-2/3 w-[150%] md:top-32 top-20 left-32">
+                </div>
+            </div>
+        </div>
+
+    </section>
+    <!-- Features -->
+    <section class="bg-bookmark-white py-20 mt-20 lg:mt-60">
+        <!-- heading features -->
+        <div class="sm:w-3/4 lg:w-5/12 mx-auto px-2">
+            <h1 class="text-3xl text-center text-bookmark-blue font-bold"> Features</h1>
+            <p class="text-bookmark-grey text-center mt-4 "> Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                Tempora, molestias, harum tenetur eum hic ipsum totam veritatis cum fugiat similique atque corporis eius
+                ab ad! </p>
+        </div>
+        <!-- ----------tabs features----------------------- -->
+        <ul class=" justify-center items-center mt-8 nav nav-tabs flex flex-col md:flex-row flex-wrap list-none border-b-0 pl-0 mb-4"
+            id="tabs-tab" role="tablist">
+            <li class="nav-item w-full px-2 md:w-fit" role="presentation">
+                <a href="#tabs-home" class="
+      nav-link
+      block
+      font-medium
+      text-md
+      border-x-0 border-t-0 border-b-2 border-transparent
+      px-6
+      py-3
+      my-2
+       hover:bg-gray-100
+      focus:border-bookmark-red
+      hover:text-bookmark-red
+      focus:text-bookmark-red
+      active
+      text-center
+
+    " id="tabs-home-tab" data-bs-toggle="pill" data-bs-target="#tabs-home" role="tab" aria-controls="tabs-home"
+                    aria-selected="true">Simple Bookmarking</a>
+            </li>
+            <li class="nav-item w-full px-2 md:w-fit" role="presentation">
+                <a href="#tabs-profile" class="
+      nav-link
+      block
+      font-medium
+      text-md
+      border-x-0 border-t-0 border-b-2 border-transparent
+      px-6
+      py-3
+      my-2
+       hover:bg-gray-100
+      focus:border-bookmark-red
+      hover:text-bookmark-red
+      focus:text-bookmark-red
+      text-center
+    " id="tabs-profile-tab" data-bs-toggle="pill" data-bs-target="#tabs-profile" role="tab"
+                    aria-controls="tabs-profile" aria-selected="false">Speedy Searching</a>
+            </li>
+            <li class="nav-item w-full px-2 md:w-fit" role="presentation">
+                <a href="#tabs-messages" class="
+      nav-link
+      block
+      font-medium
+      text-md
+      border-x-0 border-t-0 border-b-2 border-transparent
+      px-6
+      py-3
+      my-2
+       hover:bg-gray-100
+      focus:border-bookmark-red
+      hover:text-bookmark-red
+      focus:text-bookmark-red
+      text-center
+    " id="tabs-messages-tab" data-bs-toggle="pill" data-bs-target="#tabs-messages" role="tab"
+                    aria-controls="tabs-messages" aria-selected="false">Easy Sharing</a>
+            </li>
+        </ul>
+        <div class="tab-content" id="tabs-tabContent">
+            <div class="tab-pane fade show active" id="tabs-home" role="tabpanel" aria-labelledby="tabs-home-tab">
+                <div class="container flex flex-col lg:flex-row items-center gap-12 lg:gap-24 mt-14 lg:mt-28">
+                    <!-- Content -->
+                    <div class="flex flex-1 justify-center  mb-10 md:mb-16 lg:mb-0  relative ">
+                        <img class="z-10 w-4/6 h-4/6 sm:w-3/6 sm:h-3/6 md:w-full md:h-full"
+                            src="images/illustration-features-tab-1.svg" alt="">
+                        <!-- taswira ta3 rawl -->
+                        <div
+                            class="  rounded-r-full bg-bookmark-purple absolute h-5/6 w-[150%] md:top-32 top-16 right-32">
+                        </div>
+                    </div>
+                    <div class="flex flex-1 flex-col items-center lg:items-start">
+                        <h2
+                            class="text-bookmark-blue text-3xl md: text-4 lg:text-5xl text-center font-bold lg:text-left mb-6">
+                            Bookmark in one click
+                        </h2>
+                        <p class="text-bookmark-grey text-lg text-center lg:text-left mb-6">
+                            A clean and simple interface to organize your favourite websites. Open a new browser tab and
+                            see
+                            load instantly. Try it for free.
+                        </p>
+                        <div class="flex justify-center flex-wrap gap-6">
+                            <button type="button" class="btn btn-purple hover:bg-bookmark-purple ">More
+                                info</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="tab-pane fade" id="tabs-profile" role="tabpanel" aria-labelledby="tabs-profile-tab">
+                <div class="container flex flex-col lg:flex-row items-center gap-12 lg:gap-24 mt-14 lg:mt-28">
+                    <!-- Content -->
+                    <div class="flex flex-1 justify-center  mb-10 md:mb-16 lg:mb-0  relative ">
+                        <img class="z-10 w-4/6 h-4/6 sm:w-3/6 sm:h-3/6 md:w-full md:h-full"
+                            src="images/illustration-features-tab-2.svg" alt="">
+                        <!-- taswira ta3 rawl -->
+                        <div
+                            class="  rounded-r-full bg-bookmark-purple absolute h-5/6 w-[150%] md:top-32 top-16 right-32">
+                        </div>
+                    </div>
+                    <div class="flex flex-1 flex-col items-center lg:items-start">
+                        <h2
+                            class="text-bookmark-blue text-3xl md: text-4 lg:text-5xl text-center font-bold lg:text-left mb-6">
+                            Intelligent Search
+                        </h2>
+                        <p class="text-bookmark-grey text-lg text-center lg:text-left mb-6">
+                            A clean and simple interface to organize your favourite websites. Open a new browser tab and
+                            see
+                            load instantly. Try it for free.
+                        </p>
+                        <div class="flex justify-center flex-wrap gap-6">
+                            <button type="button" class="btn btn-purple hover:bg-bookmark-purple ">More
+                                info</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="tab-pane fade" id="tabs-messages" role="tabpanel" aria-labelledby="tabs-profile-tab">
+                <div class="container flex flex-col lg:flex-row items-center gap-12 lg:gap-24 mt-14 lg:mt-28">
+                    <!-- Content -->
+                    <div class="flex flex-1 justify-center  mb-10 md:mb-16 lg:mb-0  relative ">
+                        <img class="z-10 w-4/6 h-4/6 sm:w-3/6 sm:h-3/6 md:w-full md:h-full"
+                            src="images/illustration-features-tab-3.svg" alt="">
+                        <!-- taswira ta3 rawl -->
+                        <div
+                            class="  rounded-r-full bg-bookmark-purple absolute h-5/6 w-[150%] md:top-32 top-16 right-32">
+                        </div>
+                    </div>
+                    <div class="flex flex-1 flex-col items-center lg:items-start">
+                        <h2
+                            class="text-bookmark-blue text-3xl md: text-4 lg:text-5xl text-center font-bold lg:text-left mb-6">
+                            Share your books
+                        </h2>
+                        <p class="text-bookmark-grey text-lg text-center lg:text-left mb-6">
+                            A clean and simple interface to organize your favourite websites. Open a new browser tab and
+                            see
+                            load instantly. Try it for free.
+                        </p>
+                        <div class="flex justify-center flex-wrap gap-6">
+                            <button type="button" class="btn btn-purple hover:bg-bookmark-purple ">More
+                                info</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+
+
+    </section>
+
+    <!-- Download section -->
+    <section class="py-20 mt-20">
+        <!-- heading downliad -->
+        <div class="sm:w-3/4 lg:w-5/12 mx-auto px-2">
+            <h1 class="text-3xl text-center text-bookmark-blue font-bold"> Download the extension</h1>
+            <p class="text-bookmark-grey text-center mt-4 "> Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                Tempora, molestias, harum tenetur eum hic ipsum totam veritatis cum fugiat similique atque corporis eius
+                ab ad! </p>
+        </div>
+        <!-- cards -->
+        <div class="container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16 max-w-screen-lg mt-16">
+            <div class="flex justify-center shadow-xl items-center  pb-6 rounded-xl pt-12 lg:mb-12 ">
+                <div class="rounded-lg  bg-white w-full">
+                    <a href="#!">
+                        <img class="rounded-t-lg mx-auto px-6  mb-8" src="images/logo-chrome.svg" alt="" />
+                    </a>
+                    <div class=" text-center">
+                        <h5 class="text-gray-900 text-xl font-bold mb-2 px-6 ">Add to chrome</h5>
+                        <p class="text-bookmark-grey  mb-8 px-6 ">
+                            Minimum version 6.2
+                        </p>
+                        <hr class="w-full h-0 border-t-4 border-bookmark-grey/25 my-6 border-dotted">
+                        <div class=" flex px-6 ">
+                            <button type="button"
+                                class=" flex-1 font-semibold  btn btn-purple hover:bg-bookmark-white hover:text-black w-full ">Add
+                                & Install extension</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--  -->
+            <div class="flex justify-center shadow-xl items-center pb-6 rounded-xl pt-12 lg:my-6 ">
+                <div class="rounded-lg  bg-white w-full">
+                    <a href="#!">
+                        <img class="rounded-t-lg mx-auto px-6  mb-8" src="images/logo-firefox.svg" alt="" />
+                    </a>
+                    <div class=" text-center">
+                        <h5 class="text-gray-900 text-xl font-bold mb-2 px-6 ">Add to firefox</h5>
+                        <p class="text-bookmark-grey  mb-8 px-6 ">
+                            Minimum version 6.2
+                        </p>
+                        <hr class="w-full h-0 border-t-4 border-bookmark-grey/25 my-6 border-dotted">
+                        <div class=" flex px-6 ">
+                            <button type="button"
+                                class=" flex-1 font-semibold  btn btn-purple hover:bg-bookmark-white hover:text-black w-full ">Add
+                                & Install extension</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--  -->
+            <div class="flex justify-center shadow-xl items-center  pb-6 rounded-xl pt-12 lg:mt-6 ">
+                <div class="rounded-lg  bg-white w-full">
+                    <a href="#!">
+                        <img class="rounded-t-lg mx-auto px-6  mb-8" src="images/logo-opera.svg" alt="" />
+                    </a>
+                    <div class=" text-center">
+                        <h5 class="text-gray-900 text-xl font-bold mb-2 px-6 ">Add to opera</h5>
+                        <p class="text-bookmark-grey  mb-8 px-6 ">
+                            Minimum version 6.2
+                        </p>
+                        <hr class="w-full h-0 border-t-4 border-bookmark-grey/25 my-6 border-dotted">
+                        <div class=" flex px-6 ">
+                            <button type="button"
+                                class=" flex-1 font-semibold  btn btn-purple hover:bg-bookmark-white hover:text-black w-full ">Add
+                                & Install extension</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+    <!-- Frequently asked -->
+    <section class="bg-bookmark-white py-20 ">
+        <!-- heading downliad -->
+        <div class="sm:w-3/4 lg:w-5/12 mx-auto px-2">
+            <h1 class="text-3xl text-center text-bookmark-blue font-bold"> Frequently Asked Questions</h1>
+            <p class="text-bookmark-grey text-center mt-4 "> Lorem ipsum dolor sit, amet consectetur adipisicing
+                elit.
+                Tempora, molestias, harum tenetur eum hic ipsum totam veritatis cum fugiat similique atque corporis
+                eius
+                ab ad! </p>
+        </div>
+        <div class="container">
+            <div class="w-3/4 lg:w-9/12 flex justify-center flex-col mt-12 mx-auto" id="accordion-flush"
+                data-accordion="collapse"
+                data-active-classes="bg-transparent dark:bg-gray-900 text-bookmark-red dark:text-white"
+                data-inactive-classes="text-black dark:text-black">
+                <h2 id="accordion-flush-heading-1">
+                    <button type="button"
+                        class="flex items-center justify-between w-full py-5 font-medium text-left border-b border-gray-200 dark:border-gray-700 dark:bg-gray-900 text-gray-900 dark:text-white text-xl"
+                        data-accordion-target="#accordion-flush-body-1" aria-expanded="false"
+                        aria-controls="accordion-flush-body-1">
+                        <span>What is Bookmark?</span>
+                        <svg data-accordion-icon="" class="w-6 h-6 rotate-180 shrink-0" fill="currentColor"
+                            viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd"
+                                d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                clip-rule="evenodd"></path>
+                        </svg>
+                    </button>
+                </h2>
+                <div id="accordion-flush-body-1" class="hidden" aria-labelledby="accordion-flush-heading-1">
+                    <div class="py-5 font-bookmark-grey border-b border-gray-200 dark:border-gray-700">
+                        <p class="mb-2 text-gray-500 dark:text-gray-400 leading-10">Lorem, ipsum dolor sit amet
+                            consectetur
+                            adipisicing elit. Corrupti totam voluptatum eos necessitatibus, officia a cupiditate impedit
+                            labore mollitia, beatae dolore aspernatur id, culpa reiciendis asperiores! Minima, magni
+                            dignissimos amet nostrum suscipit ipsam impedit, maxime repudiandae molestias adipisci ab
+                            harum expedita. Possimus voluptates sequi assumenda inventore dolorem nisi minus alias.</p>
+
+                    </div>
+                </div>
+                <h2 id="accordion-flush-heading-2">
+                    <button type="button"
+                        class="flex items-center justify-between w-full py-5 font-medium text-left border-b border-gray-200 dark:border-gray-700 dark:bg-gray-900 text-gray-900 dark:text-white text-xl"
+                        data-accordion-target="#accordion-flush-body-2" aria-expanded="false"
+                        aria-controls="accordion-flush-body-1">
+                        <span>How can i request a new browser?</span>
+                        <svg data-accordion-icon="" class="w-6 h-6 rotate-180 shrink-0" fill="currentColor"
+                            viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd"
+                                d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                clip-rule="evenodd"></path>
+                        </svg>
+                    </button>
+                </h2>
+                <div id="accordion-flush-body-2" class="hidden" aria-labelledby="accordion-flush-heading-1">
+                    <div class="py-5 font-bookmark-grey border-b border-gray-200 dark:border-gray-700">
+                        <p class="mb-2 text-gray-500 dark:text-gray-400 leading-10">Lorem, ipsum dolor sit amet
+                            consectetur
+                            adipisicing elit. Corrupti totam voluptatum eos necessitatibus, officia a cupiditate impedit
+                            labore mollitia, beatae dolore aspernatur id, culpa reiciendis asperiores! Minima, magni
+                            dignissimos amet nostrum suscipit ipsam impedit, maxime repudiandae molestias adipisci ab
+                            harum expedita. Possimus voluptates sequi assumenda inventore dolorem nisi minus alias.</p>
+
+                    </div>
+                </div>
+                <h2 id="accordion-flush-heading-3">
+                    <button type="button"
+                        class="flex items-center justify-between w-full py-5 font-medium text-left border-b border-gray-200 dark:border-gray-700 dark:bg-gray-900 text-gray-900 dark:text-white text-xl"
+                        data-accordion-target="#accordion-flush-body-3" aria-expanded="false"
+                        aria-controls="accordion-flush-body-1">
+                        <span>Is there a mobile app?</span>
+                        <svg data-accordion-icon="" class="w-6 h-6 rotate-180 shrink-0" fill="currentColor"
+                            viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd"
+                                d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                clip-rule="evenodd"></path>
+                        </svg>
+                    </button>
+                </h2>
+                <div id="accordion-flush-body-3" class="hidden" aria-labelledby="accordion-flush-heading-1">
+                    <div class="py-5 font-bookmark-grey border-b border-gray-200 dark:border-gray-700">
+                        <p class="mb-2 text-gray-500 dark:text-gray-400 leading-10">Lorem, ipsum dolor sit amet
+                            consectetur
+                            adipisicing elit. Corrupti totam voluptatum eos necessitatibus, officia a cupiditate impedit
+                            labore mollitia, beatae dolore aspernatur id, culpa reiciendis asperiores! Minima, magni
+                            dignissimos amet nostrum suscipit ipsam impedit, maxime repudiandae molestias adipisci ab
+                            harum expedita. Possimus voluptates sequi assumenda inventore dolorem nisi minus alias.</p>
+
+                    </div>
+                </div>
+                <h2 id="accordion-flush-heading-1">
+                    <button type="button"
+                        class="flex items-center justify-between w-full py-5 font-medium text-left border-b border-gray-200 dark:border-gray-700 dark:bg-gray-900 text-gray-900 dark:text-white text-xl"
+                        data-accordion-target="#accordion-flush-body-4" aria-expanded="false"
+                        aria-controls="accordion-flush-body-4">
+                        <span>What about other chromium browsers?</span>
+                        <svg data-accordion-icon="" class="w-6 h-6 rotate-180 shrink-0" fill="currentColor"
+                            viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd"
+                                d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                clip-rule="evenodd"></path>
+                        </svg>
+                    </button>
+                </h2>
+                <div id="accordion-flush-body-4" class="hidden" aria-labelledby="accordion-flush-heading-1">
+                    <div class="py-5 font-bookmark-grey border-b border-gray-200 dark:border-gray-700">
+                        <p class="mb-2 text-gray-500 dark:text-gray-400 leading-10">Lorem, ipsum dolor sit amet
+                            consectetur
+                            adipisicing elit. Corrupti totam voluptatum eos necessitatibus, officia a cupiditate impedit
+                            labore mollitia, beatae dolore aspernatur id, culpa reiciendis asperiores! Minima, magni
+                            dignissimos amet nostrum suscipit ipsam impedit, maxime repudiandae molestias adipisci ab
+                            harum expedita. Possimus voluptates sequi assumenda inventore dolorem nisi minus alias.</p>
+
+                    </div>
+                </div>
+                <button
+                    class="btn btn-purple w-fit self-center mt-12 hover:text-black hover:bg-bookmark-white hover:shadow-md">More
+                    info</button>
+            </div>
+
+
+    </section>
+
+    <!-- Contact us -->
+    <section class="bg-bookmark-purple pt-10 pb-20">
+        <div class="container text-white">
+            <div class="sm:w-3/4 lg:w-2/4 mx-auto">
+                <p class="uppercase font-medium text-center mt-8 "> 35,000+ already joined</p>
+                <h1 class="md:text-4xl text-3xl text-center mt-8 font-semibold">Stay up-to-date with what we're doing
+                </h1>
+                <div class="flex flex-col sm:flex-row gap-6 mt-8">
+                    <input type="mail" placeholder="Enter your email address"
+                        class="text-black focus:outline-none px-6 py-4 flex-1 rounded-md font-medium">
+                    <button type="button"
+                        class=" btn bg-bookmark-red  text-white rounded-md border-2 border-bookmark-red  px-6 py-2 font-medium mx-auto hover:bg-bookmark-white hover:text-black">Contact
+                        Us</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Foooter-->
+
+    <footer class="py-8 bg-bookmark-blue">
+        <div class="container flex flex-col md:flex-row gap-6 justify-between text-white font-medium">
+            <div class="flex  flex-col md:flex-row md:gap-16 gap-6 items-center ">
+                <div class="flex flex-row gap-2 pr-6 md:pr-0 items-center cursor-pointer">
+                    <i class=" py-2 px-2  rounded-full bg-bookmark-purple text-[12px] fa-solid fa-bookmark"></i>
+                    <h1 class="uppercase font-medium text-white text-2xl ">bookmark</h1>
+                </div>
+                <a href="#"
+                    class="uppercase font-light text-white text-lg hover:text-bookmark-red tracking-widest">Features</a>
+                <a href="#"
+                    class="uppercase font-light text-white text-lg hover:text-bookmark-red tracking-widest">pricing</a>
+                <a href="#"
+                    class="uppercase font-light text-white text-lg hover:text-bookmark-red tracking-widest">contact</a>
+            </div>
+            <div class="justify-end flex gap-6 mt-4 self-center">
+                <img class="cursor-pointer" src="images/icon-facebook.svg" alt="">
+                <img class="cursor-pointer" src="images/icon-twitter.svg" alt="">
+            </div>
+        </div>
+    </footer>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/index.min.js"></script>
+<script src="https://unpkg.com/flowbite@1.5.3/dist/flowbite.js"></script>
+<script>
+    function Open() {
+        $("#hiddennavbar").removeClass("hidden");
+        $("nav").addClass("invisible");
+        $("body").addClass("overflow-hidden");
+    }
+    function Close() {
+        $("#hiddennavbar").addClass("hidden");
+        $("nav").removeClass("invisible");
+        $("body").removeClass("overflow-hidden");
+    }
+</script>
+
+</html>
