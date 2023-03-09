@@ -18,7 +18,7 @@
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tw-elements/dist/css/index.min.css" />
     <!-- flowbite -->
-    <link rel="stylesheet" href="https://unpkg.com/flowbite@1.5.3/dist/flowbite.min.css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.css" rel="stylesheet" />
     <!-- tailwind link -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- tailwind config -->
@@ -59,7 +59,7 @@
         @apply bg-bookmark-purple text-white
         }
         .btn-white{
-@apply bg-bookmark-white
+        @apply bg-bookmark-white
         }
     </style>
 </head>
@@ -154,7 +154,7 @@
         </div>
         <!-- ----------tabs features----------------------- -->
         <ul class=" justify-center items-center mt-8 nav nav-tabs flex flex-col md:flex-row flex-wrap list-none border-b-0 pl-0 mb-4"
-            id="tabs-tab" role="tablist">
+            role="tablist" data-te-nav-ref>
             <li class="nav-item w-full px-2 md:w-fit" role="presentation">
                 <a href="#tabs-home" class="
       nav-link
@@ -172,7 +172,7 @@
       active
       text-center
 
-    " id="tabs-home-tab" data-bs-toggle="pill" data-bs-target="#tabs-home" role="tab" aria-controls="tabs-home"
+    " data-te-toggle="pill" data-te-target="#tabs-home" data-te-nav-active role="tab" aria-controls="tabs-home"
                     aria-selected="true">Simple Bookmarking</a>
             </li>
             <li class="nav-item w-full px-2 md:w-fit" role="presentation">
@@ -190,8 +190,8 @@
       hover:text-bookmark-red
       focus:text-bookmark-red
       text-center
-    " id="tabs-profile-tab" data-bs-toggle="pill" data-bs-target="#tabs-profile" role="tab"
-                    aria-controls="tabs-profile" aria-selected="false">Speedy Searching</a>
+    " data-te-toggle="pill" data-te-target="#tabs-profile" role="tab" aria-controls="tabs-profile"
+                    aria-selected="false">Speedy Searching</a>
             </li>
             <li class="nav-item w-full px-2 md:w-fit" role="presentation">
                 <a href="#tabs-messages" class="
@@ -208,12 +208,13 @@
       hover:text-bookmark-red
       focus:text-bookmark-red
       text-center
-    " id="tabs-messages-tab" data-bs-toggle="pill" data-bs-target="#tabs-messages" role="tab"
-                    aria-controls="tabs-messages" aria-selected="false">Easy Sharing</a>
+    " data-te-toggle="pill" data-te-target="#tabs-messages" role="tab" aria-controls="tabs-messages"
+                    aria-selected="false">Easy Sharing</a>
             </li>
         </ul>
-        <div class="tab-content" id="tabs-tabContent">
-            <div class="tab-pane fade show active" id="tabs-home" role="tabpanel" aria-labelledby="tabs-home-tab">
+        <div>
+            <div class="hidden opacity-0 opacity-100 transition-opacity duration-150 ease-linear data-[te-tab-active]:block"
+                id="tabs-home" role="tabpanel" aria-labelledby="tabs-home-tab" data-te-tab-active>
                 <div class="container flex flex-col lg:flex-row items-center gap-12 lg:gap-24 mt-14 lg:mt-28">
                     <!-- Content -->
                     <div class="flex flex-1 justify-center  mb-10 md:mb-16 lg:mb-0  relative ">
@@ -242,7 +243,8 @@
 
                 </div>
             </div>
-            <div class="tab-pane fade" id="tabs-profile" role="tabpanel" aria-labelledby="tabs-profile-tab">
+            <div class="hidden opacity-0 transition-opacity duration-150 ease-linear data-[te-tab-active]:block"
+                id="tabs-profile" role="tabpanel" aria-labelledby="tabs-profile-tab">
                 <div class="container flex flex-col lg:flex-row items-center gap-12 lg:gap-24 mt-14 lg:mt-28">
                     <!-- Content -->
                     <div class="flex flex-1 justify-center  mb-10 md:mb-16 lg:mb-0  relative ">
@@ -271,7 +273,8 @@
 
                 </div>
             </div>
-            <div class="tab-pane fade" id="tabs-messages" role="tabpanel" aria-labelledby="tabs-profile-tab">
+            <div class="hidden opacity-0 transition-opacity duration-150 ease-linear data-[te-tab-active]:block"
+                id="tabs-messages" role="tabpanel" aria-labelledby="tabs-profile-tab">
                 <div class="container flex flex-col lg:flex-row items-center gap-12 lg:gap-24 mt-14 lg:mt-28">
                     <!-- Content -->
                     <div class="flex flex-1 justify-center  mb-10 md:mb-16 lg:mb-0  relative ">
@@ -306,6 +309,7 @@
 
 
     </section>
+
 
     <!-- Download section -->
     <section class="py-20 mt-20">
@@ -546,7 +550,7 @@
     </footer>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/index.min.js"></script>
-<script src="https://unpkg.com/flowbite@1.5.3/dist/flowbite.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.js"></script>
 <script>
     function Open() {
         $("#hiddennavbar").removeClass("hidden");
